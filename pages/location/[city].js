@@ -1,11 +1,11 @@
-import React from "react";
-import cities from "../../lib/city.list.json";
-import TodaysWeather from "../../components/TodaysWeather";
-import HourlyWeather from "../../components/HourlyWeather";
-import Link from "next/link";
-import Head from "next/head";
-import SearchBox from "../../components/SearchBox";
 import moment from "moment-timezone";
+import Head from "next/head";
+import Link from "next/link";
+import React from "react";
+import HourlyWeather from "../../components/HourlyWeather";
+import SearchBox from "../../components/SearchBox";
+import TodaysWeather from "../../components/TodaysWeather";
+import cities from "../../lib/city.list.json";
 
 export async function getServerSideProps(context) {
   const city = getCityId(context.params.city);
@@ -85,19 +85,18 @@ export default function City({
         <title>{city.name} Weather - Next Weather App</title>
       </Head>
 
-      <div className="page-wrapper">
-        <div className="container">
-          <Link href="/">
-            <a className="back-link">&larr; Home</a>
+      <div className='page-wrapper'>
+        <div className='container'>
+          <Link href='/'>
+            <a className='back-link'>&larr; Home</a>
           </Link>
-          <SearchBox placeholder="Search for a location" />
+          <SearchBox />
           <TodaysWeather
             city={city}
             weather={weeklyWeather[0]}
             timezone={timezone}
           />
           <HourlyWeather hourlyWeather={hourlyWeather} timezone={timezone} />
-          
         </div>
       </div>
     </div>
